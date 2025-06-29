@@ -1,4 +1,3 @@
-
 import streamlit as st
 import json
 import os
@@ -38,7 +37,7 @@ def login():
     username = st.text_input("Username", key="login_user")
     password = st.text_input("Password", type="password", key="login_pass")
 
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns(2)
     with col1:
         if st.button("Login"):
             if username in users and users[username]["password"] == password:
@@ -58,7 +57,7 @@ def register():
     new_pass = st.text_input("Create Password", type="password", key="reg_pass")
     role = st.selectbox("You are a", ["Property Owner", "Candidate Looking for Rent"])
 
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns(2)
     with col1:
         if st.button("Submit Registration"):
             if new_user in users:
@@ -123,7 +122,7 @@ def matching_page():
                 })
 
     if matches:
-        st.success(f"Found {len(matches)} matches!")
+        st.success(f"Found {len(matches)} matches:")
         for match in matches:
             st.write(match)
     else:
